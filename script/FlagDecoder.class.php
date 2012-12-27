@@ -12,8 +12,8 @@ class FlagDecoder {
             $playerStrings, $gameStrings;
 
     function FlagDecoder($playerFlags, $vehicleFlags, $gameFlags) {
-        $this->gameStrings = &$GLOBALS[gameStrings];
-        $this->playerStrings = &$GLOBALS[playerStrings];
+        $this->gameStrings = &$GLOBALS['gameStrings'];
+        $this->playerStrings = &$GLOBALS['playerStrings'];
         $this->playerFlags = $playerFlags;
         $this->gameFlags = $gameFlags;
         $this->vehicleFlags = $vehicleFlags;
