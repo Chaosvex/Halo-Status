@@ -1,0 +1,558 @@
+/*
+* CSS reset (from reset.css)
+*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+    margin:0;
+    padding:0;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+fieldset,img {
+    border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+    font-style:normal;
+    font-weight:normal;
+}
+ol,ul {
+    list-style:none;
+}
+caption,th {
+    text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-size:100%;
+    font-weight:normal;
+}
+q:before,q:after {
+    content:'';
+}
+abbr,acronym { border:0;
+}
+html{
+    overflow: auto;
+
+}
+
+/*
+* Main script styling information starts 'ere
+*/
+body {
+    background: #000 url(../images/bg.jpg) no-repeat top center;
+    font-family: 'Cantarell', sans-serif;
+}
+
+a , a:hover, a:visited {
+    text-decoration: none;
+}
+
+#container {
+    margin: 0 auto;
+    padding: 20px;
+    width: 960px;
+    margin-top: 60px;
+    background: #000;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.6);
+}
+
+#inner-container {
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+#banner {
+    background: url(../images/map_banners/icefields_wire.jpg) no-repeat center;
+    width: 918px;
+    height: 124px;
+    border: 1px solid #525252;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    text-shadow: 5px 5px 3px #111;
+    font-family: 'Convergence', sans-serif;
+    color: #e9e9e9;
+}
+
+#game-icon {
+    /*Dynamically changed by jQuery - must be separate rules so we don't have to
+    respecify them in query.js*/
+    background-image: url(../images/server.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    float: left;
+    width: 95px;
+    height: 98px;
+    padding: 15px 15px 15px 60px;
+}
+
+#banner h1 {
+    margin-top: 30px;
+    font-size: 30px;
+}
+
+#banner h2 {
+    margin-top: 5px;
+    font-size: 25px;
+}
+
+ul#navigation {
+    margin: 15px 0px 15px;
+}
+
+#navigation li {
+    background: url(../images/sprite.png) no-repeat top left;
+    background-position: -143px 1px;
+    display: inline-block;
+    text-align: center;
+    width: 113px;
+    line-height: 32px;
+    margin-right: 15px;
+    text-shadow: 2px 2px 2px #524a4a;
+    /*Forget it - dropping IE7 support
+    zoom:1;
+    *display: inline;
+    */
+}
+
+#navigation li.active  {
+    background-position: -256px 1px;
+}
+
+#navigation li:hover  {
+    background-position: -30px 1px;
+}
+
+#navigation li.hidden {
+    display: none;
+}
+
+#navigation li a , #navigation li a:hover, #navigation li a:visited {
+    color: #fff;
+}
+
+.information_box {
+    display: inline-block;
+    border: 1px solid #c3c3c3;
+    float:left; /* IE 6 & 7 */
+    margin-bottom: 15px;
+    padding: 4px;
+    font-family: Arial;
+    font-size: 12px;
+}
+
+.information_box h1 {
+    background:url(../images/heading.png) repeat-x;
+    padding: 0px 10px 5px 10px;
+    line-height: 32px;
+    margin-bottom: 5px;
+    font-family: 'Cantarell', sans-serif;
+    text-shadow: 2px 2px 2px #524a4a;
+    font-size: 16px;
+    color: #fff;
+}
+
+/* Quick hacks for the player info box until more blocks are added */
+.information_box_temp {
+    display: inline-block;
+    border: 1px solid #c3c3c3;
+    margin-left: 25%; /* Oh yes I did */
+    margin-bottom: 15px;
+    padding: 4px;
+    font-family: Arial;
+    font-size: 12px;
+}
+
+.information_box_temp h1 {
+    background:url(../images/heading.png) repeat-x;
+    padding: 0px 10px 5px 10px;
+    line-height: 32px;
+    margin-bottom: 5px;
+    font-family: 'Cantarell', sans-serif;
+    text-shadow: 2px 2px 2px #524a4a;
+    font-size: 16px;
+    color: #fff;
+}
+/* Delete the above */
+
+.right {
+    float: right;
+}
+
+.small {
+    width: 439px;
+}
+
+.large {
+    width: 99%; /* bad! */
+}
+
+footer {
+    margin: 0 auto;
+    width: 100%;
+    display:block;
+    clear:both;
+}
+
+footer p {
+    text-align: center;
+    font-size: 12px;
+}
+
+.bar {
+    background-repeat: no-repeat, no-repeat, repeat-x;
+    background-position: left, right, center;
+    text-align: center;
+    min-width: 40px;
+    line-height: 23px;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: 2px 2px 2px #524a4a;
+    color: #fff;
+}
+
+#red .bar {
+    background-image: url(../images/bars/red_start.png), url(../images/bars/red_end.png), url(../images/bars/red_fill.png);
+}
+
+#blue .bar {
+    background-image: url(../images/bars/blue_start.png), url(../images/bars/blue_end.png), url(../images/bars/blue_fill.png);
+}
+
+.team_information {
+    padding: 2px 0px 4px 10px;
+}
+
+span {
+    display: inline-block;
+}
+
+span.team_name {
+    width: 190px;
+}
+
+span.players {
+    width: 100px;
+}
+
+span.score {
+    width: 110px;
+}
+
+span.playername {
+    width: 125px;
+}
+
+span.playerscore {
+    width: 125px;
+}
+
+.pingbars{
+    margin-top:4px;
+    margin-right: 10px;
+    background: url(../images/ping_sprite.png) no-repeat top left;
+    width:24px;
+    height:18px;
+    float:right;
+}
+
+.pingbars.excellent { background-position: 0 0; }
+.pingbars.good { background-position: -24px 0; }
+.pingbars.decent { background-position: -48px 0; }
+.pingbars.mediocre { background-position: -72px 0; }
+.pingbars.poor { background-position: -96px 0; }
+.pingbars.bad { background-position: -120px 0; }
+.pingbars.unplayable{ background-position: -144px 0; }
+.pingbars.unknown { background-position: -168px 0; }
+
+span.playerrank {
+    width: 60px;
+}
+
+table {
+    width: 100%;
+}
+
+tr {
+    line-height: 26px;
+}
+
+td {
+    padding-left:10px;
+    width: 60%;
+}
+
+.icon {
+    background: url(../images/sprite.png) no-repeat top left;
+    position: relative;
+    float: left;
+    top: 4px;
+    width: 16px;
+    margin-right: 10px;
+    height: 16px;
+}
+
+.icon.monitor{ background-position: -475px 0; } 
+.sprite-blue_end{ background-position: 0 0; width: 7px; height: 23px; } 
+.sprite-blue_fill{ background-position: -12px 0; width: 1px; height: 23px; } 
+.sprite-blue_start{ background-position: -18px 0; width: 7px; height: 23px; } 
+.icon.cog{ background-position: -374px 0;  } 
+.icon.flag{ background-position: -395px 0; } 
+.sprite.heading{ background-position: -416px 0; }  
+.icon.map{ background-position: -433px 0;} 
+.icon.mc{ background-position: -454px 0;  } 
+.icon.padlock{ background-position: -496px 0; } 
+.sprite-red_end{ background-position: -517px 0;} 
+.sprite-red_fill{ background-position: -529px 0; } 
+.sprite-red_start{ background-position: -535px 0; } 
+.icon.server{ background-position: -547px 0;  } 
+.icon.team{ background-position: -568px 0; } 
+
+tr:nth-child(odd) {
+    background-color:#e1e1e1;
+}
+
+.ui-tabs-hide {
+    display: none;
+}
+
+#activity_spark {
+    position: relative;
+    top: 5px;
+    float: right;
+    padding-right: 7px;
+}
+
+#query-tab {
+    text-align: center;
+    margin: 30px;
+}
+
+input[type=text] {
+    /*One day CSS will have a sensible way to centre stuff. One day.*/
+    display: inline-block;
+    margin: 0 auto;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    border: 1px #b0b0b0 solid;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    color: #b0b0b0;
+    text-align: center;
+    width: 230px;
+    margin-right: 5px;
+}
+
+input[type=submit] {
+    border: none;
+    background: url(../images/sprite.png) no-repeat top left;
+    background-position: -143px 1px;
+    height: 34px;
+    width: 113px;
+    text-shadow: 2px 2px 2px #524a4a;
+    color: #fff;
+    font-size: 16px;
+}
+
+input[type=submit]:hover {
+    background-position: -30px 1px;
+}
+
+input[type=submit]:active {
+    background-position: -256px 1px;
+}
+
+ul.players {
+    width: 439px;
+}
+
+.players li {
+    padding-left:10px;
+    width:429px;
+    line-height: 26px;
+}
+
+.players li:nth-child(odd) {
+    background-color: #e1e1e1;
+}
+
+.players li.zombies.red {
+    background: url('../images/team_sprite.png') no-repeat top left;
+    background-position: 0px -52px;
+}
+
+.players li.zombies.blue {
+    background: url('../images/team_sprite.png') no-repeat top left;
+    background-position: 0px -78px;
+}
+
+.players li.normal.red {
+    background: url('../images/team_sprite.png') no-repeat top left;
+    background-position: 0px -26px;
+}
+
+.players li.normal.blue {
+    background: url('../images/team_sprite.png') no-repeat top left;
+}
+
+.merge {
+    display: none;
+}
+
+#ie_warning {
+    width: 100%;
+    color: #fff;
+    background: #303030;
+    text-align: center;
+    line-height: 45px;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75);
+    border-bottom: 1px #ccc solid;
+}
+
+/*
+* jGrowl CSS (from jquery.jgrowl.css)
+*/
+
+div.jGrowl {
+    z-index: 			9999;
+    color: 				#000;
+    font-size: 			12px;
+}
+
+/** Special IE6 Style Positioning **/
+div.ie6 {
+    position: 			absolute;
+}
+
+div.ie6.top-right {
+    right: 				auto;
+    bottom: 			auto;
+    left: 				expression( ( 0 - jGrowl.offsetWidth + ( document.documentElement.clientWidth ? document.documentElement.clientWidth : document.body.clientWidth ) + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' );
+    top: 				expression( ( 0 + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+}
+
+div.ie6.top-left {
+    left: 				expression( ( 0 + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' );
+    top: 				expression( ( 0 + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+}
+
+div.ie6.bottom-right {
+    left: 				expression( ( 0 - jGrowl.offsetWidth + ( document.documentElement.clientWidth ? document.documentElement.clientWidth : document.body.clientWidth ) + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' );
+    top: 				expression( ( 0 - jGrowl.offsetHeight + ( document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight ) + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+}
+
+div.ie6.bottom-left {
+    left: 				expression( ( 0 + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' );
+    top: 				expression( ( 0 - jGrowl.offsetHeight + ( document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight ) + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+}
+
+div.ie6.center {
+    left: 				expression( ( 0 + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' );
+    top: 				expression( ( 0 + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+    width: 				100%;
+}
+
+/** Normal Style Positions **/
+div.jGrowl {
+    position:			absolute;
+}
+
+body > div.jGrowl {
+    position:			fixed;
+}
+
+div.jGrowl.top-left {
+    left: 				0px;
+    top: 				0px;
+}
+
+div.jGrowl.top-right {
+    right: 				0px;
+    top: 				0px;
+}
+
+div.jGrowl.bottom-left {
+    left: 				0px;
+    bottom:				0px;
+}
+
+div.jGrowl.bottom-right {
+    right: 				0px;
+    bottom: 			0px;
+}
+
+div.jGrowl.center {
+    top: 				0px;
+    width: 				50%;
+    left: 				25%;
+}
+
+/** Cross Browser Styling **/
+div.center div.jGrowl-notification, div.center div.jGrowl-closer {
+    margin-left: 		auto;
+    margin-right: 		auto;
+}
+
+div.jGrowl div.jGrowl-notification, div.jGrowl div.jGrowl-closer {
+    background-color: 		#fff;
+    opacity: 				.75;
+    -ms-filter: 			"progid:DXImageTransform.Microsoft.Alpha(Opacity=75)"; 
+    filter: 				progid:DXImageTransform.Microsoft.Alpha(Opacity=75); 
+    zoom: 					1;
+    width: 					235px;
+    padding: 				10px;
+    margin-top: 			5px;
+    margin-bottom: 			5px;
+    font-family: 			Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 				1em;
+    text-align: 			left;
+    display: 				none;
+    -moz-border-radius: 	5px;
+    -webkit-border-radius:	5px;
+}
+
+div.jGrowl div.jGrowl-notification {
+    min-height: 			40px;
+}
+
+div.jGrowl div.jGrowl-notification,
+div.jGrowl div.jGrowl-closer {
+    margin: 				10px;
+}
+
+div.jGrowl div.jGrowl-notification div.jGrowl-header {
+    font-weight: 			bold;
+    font-size:				.85em;
+}
+
+div.jGrowl div.jGrowl-notification div.jGrowl-close {
+    z-index:				99;
+    float: 					right;
+    font-weight: 			bold;
+    font-size: 				1em;
+    cursor:					pointer;
+}
+
+div.jGrowl div.jGrowl-closer {
+    padding-top: 			4px;
+    padding-bottom: 		4px;
+    cursor: 				pointer;
+    font-size:				.9em;
+    font-weight: 			bold;
+    text-align: 			center;
+}
+
+/** Hide jGrowl when printing **/
+@media print {
+    div.jGrowl {
+        display: 			none;
+    }
+}

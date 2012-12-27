@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <title>Halo Status</title>
+        <link href="css/global.css" rel="stylesheet" type="text/css" />
+        <link href='http://fonts.googleapis.com/css?family=Convergence' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'>
+        <link id="favicon" rel="shortcut icon" type="image/x-icon" href="images/game_icons/favicons/0.ico" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+       <!--<script src="js/soundmanager2/script/soundmanager2-nodebug-jsmin.js"></script>
+        <script src="js/jquery.jgrowl_minimized.js"></script>
+        <script src="js/jquery.quicksand.js"></script>
+        <script src="js/jquery.sparkline.min.js"></script>
+        <script src="js/query.js"></script>
+        <script src="js/md5.min.js"></script>-->
+        <script src="js/everything-min.js"></script>
+        <script>
+            var sound = true;
+            soundManager.url = 'js/soundmanager2/swf/';
+            soundManager.flashVersion = 8;
+            soundManager.useFlashBlock = false;
+
+            $(function () {
+                var tabContainers = $('div#tabs > div');
+                $('div#tabs ul a').click(function () {
+                    $('#tabs ul li').removeClass('active');
+                    $(this).parent().addClass('active');
+                    tabContainers.hide().filter(this.hash).show();
+                    return false;
+                }).filter(':last').click();
+
+                $('#server_ip_input').focusin(function () {
+                    if ($(this).attr("value") == "Server IP Address") {
+                        $(this).attr("value", "");
+                    }
+                });
+
+                $('#server_ip_input').focusout(function () {
+                    if ($(this).attr("value") == "") {
+                        $(this).attr("value", "Server IP Address");
+                    }
+                });
+
+                $('#server_port_input').focusout(function () {
+                    if ($(this).attr("value") == "") {
+                        $(this).attr("value", "Server Port");
+                    }
+                });
+
+                $('#server_port_input').focusin(function () {
+                    if ($(this).attr("value") == "Server Port") {
+                        $(this).attr("value", "");
+                    }
+                });
+
+                $('#submit_query').submit(function() {
+                    beginQuery($('#server_ip_input').attr("value"),  $('#server_port_input').attr("value"));
+                    return false;
+                });
+                    
+                if ( window.location.hash.toString().substring(0, 3) == "#s=") {
+                    var info = window.location.hash.toString().substring(3).split(":", 2);
+                    beginQuery(info[0], info[1]);
+                }
+            });
+            
+            function beginQuery(ip, port) {
+                $('#team_information').hide();
+                if (typeof query != 'undefined') {
+                    query.stop();
+                    newQuery = new Query(ip, port);
+                    newQuery.transferStatus(query.getStatus());
+                    delete query;
+                    query = newQuery;
+                    delete newQuery;
+                } else {
+                    query = new Query(ip, port);
+                }
+                query.update();
+                query.setIntervalHandle(setInterval(function() {
+                    query.update();
+                }, 2000));
+            }
+     
+        </script>
+    </head>
+
+    <body>
+        <!--[if lte IE 7]>
+            <div id="ie_warning">
+                This page does not support old web browsers. Please update to a newer version of Internet Explorer or try another browser.
+            </div>
+        <![endif]-->
+        <div id="container">
+            <div id="inner-container">
+                <div id="banner">
+                    <div id="game-icon"></div>
+                    <h1 id="server_name">Halo Status</h1>
+                    <h2 id="server_ip">Enter the server information to begin</h2>
+                </div>
+                <div id="tabs">
+                    <ul id="navigation">
+                        <li class="hidden" id="server_select"><a href="#server-tab">Server Data</a></li>
+                        <li class="hidden" id="player_select"><a href="#player-tab">Player Data</a></li>
+                        <li class="active"><a href="#query-tab">New Query</a></li>
+                    </ul>
+
+                    <div id="server-tab">
+                        <div class="information_box small left">
+                            <h1>Server Information</h1>
+                            <table>
+                                <tr>
+                                    <td><span class="icon monitor"></span>Game version</td>
+                                    <td id="server_version"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="icon mc"></span>Player limit</td>
+                                    <td id="player_limit"><span id="player_count"></span><span id="activity_spark"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="icon map"></span>Current map</td>
+                                    <td id="current_map"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="icon flag"></span>Game type</td>
+                                    <td id="game_mode"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="icon cog"></span>Game variant</td>
+                                    <td id="game_variant"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="icon team"></span>Team game</td>
+                                    <td id="team_game"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="icon server"></span>Dedicated</td>
+                                    <td id="dedicated"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="icon padlock"></span>Password</td>
+                                    <td id="password"></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="information_box small right" id="map_information">
+                            <h1>Map Information</h1>
+                            <img src="images/map_information/unknown.jpg" alt="Map Information" title="Map description" />
+                        </div>
+
+                        <div class="information_box large" id="team_information">
+                            <h1>
+                                <span class="team_name">Team Information</span><span class="players">Players</span><span class="score">Score</span><span>% to victory</span>
+                            </h1>
+                            <div class="team_information" id="red">
+                                <span class="team_name">Red Team</span><span class="players"></span><span class="score"></span><span class="bar"></span>
+                            </div>
+                            <div class="team_information" id="blue">
+                                <span class="team_name">Blue Team</span><span class="players"></span><span class="score"></span><span class="bar"></span>
+                            </div>
+                        </div>
+
+                        <div style="clear:both"></div>
+
+                        <div class="information_box small left">
+                            <h1>Player Settings</h1>
+                            <table>
+                                <tr>
+                                    <td>Number of lives</td>
+                                    <td id="lives"></td>
+                                </tr>
+                                <tr>
+                                    <td>Shields</td>
+                                    <td id="shields"></td>
+                                </tr>
+                                <tr>
+                                    <td>Health scale</td>
+                                    <td id="health"></td>
+                                </tr>
+                                <tr>
+                                    <td>Respawn wait</td>
+                                    <td id="respawn_delay"></td>
+                                </tr>
+                                <tr>
+                                    <td>Respawn growth</td>
+                                    <td id="respawn_growth"></td>
+                                </tr>
+                                <tr>
+                                    <td>Suicide penalty</td>
+                                    <td id="suicide_penalty"></td>
+                                </tr>
+                                <tr>
+                                    <td>Odd man out</td>
+                                    <td id="odd_man_out"></td>
+                                </tr>
+                                <tr>
+                                    <td>Invisibility</td>
+                                    <td id="juggernaut"></td>
+                                </tr>
+                                <tr>
+                                    <td>Infinite Grenades</td>
+                                    <td id="infinite_quadnading"></td>
+                                </tr>
+                                <tr>
+                                    <td>Radar mode</td>
+                                    <td id="radar_mode"></td>
+                                </tr>
+                                <tr>
+                                    <td>Indicator</td>
+                                    <td id="nav_points"></td>
+                                </tr>
+                                <tr>
+                                    <td>Weapon set</td>
+                                    <td id="weapon_set"></td>
+                                </tr>
+                                <tr>
+                                    <td>Starting equipment</td>
+                                    <td id="starting_equipment"></td>
+                                </tr>
+                                <tr>
+                                    <td>Friend indicators</td>
+                                    <td id="friend_indicators"></td>
+                                </tr>
+                                <tr>
+                                    <td>Friendly fire</td>
+                                    <td id="friendly_fire"></td>
+                                </tr>
+                                <tr>
+                                    <td>Friendly fire penalty</td>
+                                    <td id="friendly_fire_penalty"></td>
+                                </tr>
+                                <tr>
+                                    <td>Auto balance</td>
+                                    <td id="auto_balance"></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="information_box small right">
+                            <h1>Game Settings</h1>
+                            <table id="game_settings">
+                            </table>
+                        </div>
+
+                        <div class="information_box small right">
+                            <h1>Vehicle Information</h1>
+                            <table id="vehicle_information">
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="player-tab">
+                        <div class="information_box_temp  small" id="test">
+                            <h1>
+                                <span class="playerrank">Rank</span><span class="playername">Name</span><span class="playerscore">Score</span><span class="playerping">Ping</span>
+                            </h1>
+                            <ul class="players visible">
+                            </ul>
+                        </div>
+
+                        <!--
+                        <div class="information_box small right">
+                            <h1>Positional Chart</h1>
+                        </div>
+                        
+                     
+                        <div class="information_box large" id="team_information">
+                            <h1>
+                                <span class="team_name">Team Information</span><span class="players">Players</span><span class="score">Score</span><span>% to victory</span>
+                            </h1>
+                            <div class="team_information" id="red">
+                                <span class="team_name">Red Team</span><span class="players"></span><span class="score"></span><span class="bar"></span>
+                            </div>
+                            <div class="team_information" id="blue">
+                                <span class="team_name">Blue Team</span><span class="players"></span><span class="score"></span><span class="bar"></span>
+                            </div>
+                        </div>
+
+                        <div class="information_box large">
+                            <h1>Score vs. Time</h1>
+                        </div>
+                        -->
+
+                        <div style="clear:both"></div>
+                        <ul class="players merge">
+                        </ul>
+                    </div>
+
+                    <div id="query-tab">
+                        <form id="submit_query">
+                            <input type="text" id="server_ip_input" value="Server IP Address" />
+                            <input type="text" id="server_port_input" value="Server Port" />
+                            <input type="submit" value="Query" />
+                        </form>
+                    </div>
+                </div>
+
+                <!-- You're free to edit/change the footer text as per the license terms -->
+                <footer>
+                    <p>Halo Status designed &amp; coded by Btcc22 - version 0.1</p>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>
