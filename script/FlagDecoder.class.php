@@ -12,8 +12,8 @@ class FlagDecoder {
             $playerStrings, $gameStrings;
 
     function FlagDecoder($playerFlags, $vehicleFlags, $gameFlags) {
-        $this->gameStrings = &$GLOBALS[gameStrings];
-        $this->playerStrings = &$GLOBALS[playerStrings];
+        $this->gameStrings = &$GLOBALS['gameStrings'];
+        $this->playerStrings = &$GLOBALS['playerStrings'];
         $this->playerFlags = $playerFlags;
         $this->gameFlags = $gameFlags;
         $this->vehicleFlags = $vehicleFlags;
@@ -71,26 +71,26 @@ class FlagDecoder {
     private function decodeGame() {
         $this->setFlags['Game']['Game type'] = $this->gameFlags & 7;
         if($this->setFlags['Game']['Game type'] == 1) { //CTF
-            $this->setFlags['Game']['Assault'] = ($this->gameFlags >> 3) && 1;
-            $this->setFlags['Game']['Flag must reset'] = ($this->gameFlags >> 5) && 1;
-            $this->setFlags['Game']['Flag at home to score'] = ($this->gameFlags >> 6) && 1;
-            $this->setFlags['Game']['Single flag'] = ($this->gameFlags >> 7) && 7;
+            $this->setFlags['Game']['Assault'] = ($this->gameFlags >> 3) & 1;
+            $this->setFlags['Game']['Flag must reset'] = ($this->gameFlags >> 5) & 1;
+            $this->setFlags['Game']['Flag at home to score'] = ($this->gameFlags >> 6) & 1;
+            $this->setFlags['Game']['Single flag'] = ($this->gameFlags >> 7) & 7;
         } else if($this->setFlags['Game']['Game type'] == 2) { //Slayer
-            $this->setFlags['Game']['Death bonus'] = ($this->gameFlags >> 3) && 1;
-            $this->setFlags['Game']['Kill penalty'] = ($this->gameFlags >> 5) && 1;
-            $this->setFlags['Game']['Kill in order'] = ($this->gameFlags >> 6) && 1;
+            $this->setFlags['Game']['Death bonus'] = ($this->gameFlags >> 3) & 1;
+            $this->setFlags['Game']['Kill penalty'] = ($this->gameFlags >> 5) & 1;
+            $this->setFlags['Game']['Kill in order'] = ($this->gameFlags >> 6) & 1;
         } else if($this->setFlags['Game']['Game type'] == 3) { //Oddball
-            $this->setFlags['Game']['Random start'] = ($this->gameFlags >> 3) && 1;
-            $this->setFlags['Game']['Speed with ball'] = ($this->gameFlags >> 5) && 3;
-            $this->setFlags['Game']['Trait with ball'] = ($this->gameFlags >> 7) && 3;
-            $this->setFlags['Game']['Trait without ball'] = ($this->gameFlags >> 9) && 3;
-            $this->setFlags['Game']['Ball type'] = ($this->gameFlags >> 11) && 3;
-            $this->setFlags['Game']['Ball spawn count'] = ($this->gameFlags >> 13) && 31;
+            $this->setFlags['Game']['Random start'] = ($this->gameFlags >> 3) & 1;
+            $this->setFlags['Game']['Speed with ball'] = ($this->gameFlags >> 5) & 3;
+            $this->setFlags['Game']['Trait with ball'] = ($this->gameFlags >> 7) & 3;
+            $this->setFlags['Game']['Trait without ball'] = ($this->gameFlags >> 9) & 3;
+            $this->setFlags['Game']['Ball type'] = ($this->gameFlags >> 11) & 3;
+            $this->setFlags['Game']['Ball spawn count'] = ($this->gameFlags >> 13) & 31;
         } else if($this->setFlags['Game']['Game type'] == 4) { //KotH
-            $this->setFlags['Game']['Moving hill'] = ($this->gameFlags >> 3) && 1;
+            $this->setFlags['Game']['Moving hill'] = ($this->gameFlags >> 3) & 1;
         } else if($this->setFlags['Game']['Game type'] == 5) { //Race
-            $this->setFlags['Game']['Race type'] = ($this->gameFlags >> 3) && 3;
-            $this->setFlags['Game']['Team scoring'] = ($this->gameFlags >> 5) && 3;
+            $this->setFlags['Game']['Race type'] = ($this->gameFlags >> 3) & 3;
+            $this->setFlags['Game']['Team scoring'] = ($this->gameFlags >> 5) & 3;
         }
     }
 
