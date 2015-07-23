@@ -153,13 +153,6 @@ class QueryServer {
     }
 
     private function parseResponse() {
-        //Attempt to verify data integrity
-        if (count($this->respArr) < 34 || $this->respArr[count($this->respArr) - 2] != "queryid") {
-            $this->errortext = "Invalid data returned";
-            $this->error = true;
-            return;
-        }
-
         unset($this->respArr[0]);
         $this->respArr = array_values($this->respArr);
 
