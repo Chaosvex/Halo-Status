@@ -68,7 +68,7 @@ Query.prototype.update = function () {
         },
         //Kind of a cludge but it'll do for now
         error: function (msg) {
-            that._status.error = "An HTTP error occured";
+            that._status.error = `An HTTP error occured (${msg})`;
             that._errorHandler();
             that._blockingQuery = false;
         },
