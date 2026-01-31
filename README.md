@@ -17,7 +17,11 @@ Simply copy the files from this directory to the desired path on your webserver.
 To link to a specific server, you can add a hash to the URL. For example:
 https://example.com/halostatus/#s=46.249.47.12:2332
 
-If you wish to ensure that visitors cannot query other servers, open `ajax.php` and set `USE_WHITELIST` to `true`. You should then add your server's IP and port information to list of whitelisted servers. Optionally, comment out the `New Query` button from `index.html`.
+### Restricting Servers
+If you wish to restrict which game servers can be queried, open `ajax.php` and set `USE_WHITELIST` to `true`. You should then add your server's IP and port information to list of whitelisted servers. Optionally, comment out the `New Query` button from `index.html`.
+
+### Default Server Display
+To force the page to display an initial server without having the information added to the URL, open `index.html` and set `const forceLoad = false;` to `true`. The default information on the following line should be set to match your desired server's IP and port.
 
 ## Making Changes
 

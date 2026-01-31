@@ -23,6 +23,9 @@
             soundManager.useFlashBlock = false;
 
             $(function () {
+                const forceLoad = false; // set to true to display an default server
+                const defaultInfo = ["127.0.0.1", "2302"];
+
                 var tabContainers = $('div#tabs > div');
                 $('div#tabs ul a').click(function () {
                     $('#tabs ul li').removeClass('active');
@@ -59,11 +62,14 @@
                     beginQuery($('#server_ip_input').attr("value"),  $('#server_port_input').attr("value"));
                     return false;
                 });
-                    
-                if ( window.location.hash.toString().substring(0, 3) == "#s=") {
+                 
+                if (forceLoad) {
+                    beginQuery(defaultInfo[0], defaultInfo[1]);
+                } else if (window.location.hash.toString().substring(0, 3) == "#s=") {
                     var info = window.location.hash.toString().substring(3).split(":", 2);
                     beginQuery(info[0], info[1]);
                 }
+
             });
             
             function beginQuery(ip, port) {
