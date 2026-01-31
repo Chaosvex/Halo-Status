@@ -29,24 +29,7 @@ Some of the PSDs used to create the assets for the script can be found in `psds.
 
 ## Licence
 
-This script is released under a 'do whatever you want with it, pretty much' license. The only requirements are:
-- That you abide by the license terms of by the resources  used in this script (see credits).
-- You cannot charge for the use of this script.
-- Any redistributions of this script (including modified versions) must be free of charge and must retain a copy of this file with none of the original text modified/removed. If modifications have been made, changes must be listed in this file under a 'modifications' header and it must be made clear that these changes are unofficial (including the author's name/handle will suffice).
-- Any redistributions of this script may not make changes to these terms. All future modifications must abide by and include the same terms.
-- Although it would be nice to have the credit left intact on the script's page, you may remove it entirely OR append to it but not replace it. See the guideline examples below:
-
-Acceptable (intact):
-Script by <original author>.
-
-Unacceptable (replaced):
-Script by <non-original author>.
-
-Acceptable (appended):
-Script by <original author>. Updates/modifications by <non-original author>.
-
-Unacceptable (replaced):
-Updates/modifications by <non-original author>.
+This script is released under the MIT licence.
 
 ## Requirements
 
@@ -118,23 +101,29 @@ For his work in decoding the game flags back in 2003.
 
 ### Terje Bless
 For his work in building the Perl flags decoder which I used as the basis of the PHP flags decoder (`FlagsDecoder.class.php`).
+
 http://cpansearch.perl.org/src/LINK/Net-Halo-Status-0.02/lib/Net/Halo/Status.pm
 
 ### SoundManager2
--http://www.schillmania.com/projects/soundmanager2/
--License: BSD license
+http://www.schillmania.com/projects/soundmanager2/
+
+License: BSD license
 
 ### Mark James
 Silk icon set author.
+
 http://www.famfamfam.com/lab/icons/silk/
+
 License: Creative Commons Attribution 2.5 License.
 
 ### jQuery
 http://www.jquery.com/
+
 License: GPL or MIT License
 
 ### jGrowl
 http://stanlemon.net/24
+
 License: GPL or MIT License
 
 ### jQuery UI
@@ -142,7 +131,9 @@ License: GPL or MIT License
 
 ### Crystal Interaction Design Project
 Server icon (`server.png`)
+
 http://www.everaldo.com/crystal/
+
 License: LGPL
 
 ### Master Chief zombie icon
